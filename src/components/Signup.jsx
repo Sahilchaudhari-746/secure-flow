@@ -5,7 +5,8 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Signup = () => {
   const [form, setForm] = useState({
     name: '',
@@ -43,8 +44,13 @@ const Signup = () => {
 
       const result = await response.json();
       if (response.ok) {
-        alert(result.message);
+         toast.success('Sign Up successfully!', {
+          position: 'top-right',
+          autoClose: 2000,
+        });
+        setTimeout(() => {
         navigate('/');
+      }, 2000);
       } else {
         alert(result.error || "Signup failed");
       }
@@ -55,6 +61,7 @@ const Signup = () => {
   };
 
   return (
+    <>
     <Box
       sx={{
         minHeight: '100vh',
@@ -199,6 +206,8 @@ const Signup = () => {
         </motion.div>
       </Container>
     </Box>
+    <ToastContainer />
+    </>
   );
 };
 
