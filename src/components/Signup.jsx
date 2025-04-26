@@ -27,7 +27,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     if (form.password !== form.confirmPassword) {
-      alert("Passwords do not match");
+      toast.error('Passwords do not match');
       return;
     }
 
@@ -52,11 +52,11 @@ const Signup = () => {
         navigate('/');
       }, 2000);
       } else {
-        alert(result.error || "Signup failed");
+        toast.error(result.error || 'Signup failed');
       }
     } catch (error) {
       console.error("Signup error:", error);
-      alert("An error occurred. Please try again.");
+      toast.error('An error occurred. Please try again.');
     }
   };
 
