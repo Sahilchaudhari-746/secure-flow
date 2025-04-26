@@ -44,7 +44,7 @@ const Signup = () => {
       const result = await response.json();
       if (response.ok) {
         alert(result.message);
-        navigate('/login');
+        navigate('/');
       } else {
         alert(result.error || "Signup failed");
       }
